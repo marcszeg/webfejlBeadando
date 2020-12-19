@@ -1,5 +1,6 @@
 package com.deik.webfejlBeadando.song;
 
+import com.deik.webfejlBeadando.album.Album;
 import com.deik.webfejlBeadando.album.AlbumRepository;
 import com.deik.webfejlBeadando.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,10 @@ public class SongController {
         return songRepository.findAll();
     }
 
-    @GetMapping("/albums/{id}/songs")
-    public Set<Song> getAllSongsByAlbum(@PathVariable(value = "album_id") String album_id) {
-        return songRepository.findByAlbumId(album_id);
-    }
+    /*@GetMapping("/song/{albumId}")
+    public List<Song> getSongsByAlbum(@PathVariable Album albumId) {
+        return songRepository.findByAlbumId(albumId);
+    }*/
 
     @PostMapping("/songs")
     public Song createSong(@RequestBody Song song) {

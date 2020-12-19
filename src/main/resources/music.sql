@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `music`.`ALBUM` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(250) NOT NULL,
   `artist` VARCHAR(250) NOT NULL,
-  `release` DATE,
+  `release` INT,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB AUTO_INCREMENT=1;
 

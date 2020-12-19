@@ -47,7 +47,7 @@ public class AlbumController {
         return ResponseEntity.ok(updatedAlbum);
     }
 
-    @DeleteMapping("albums/{id}")
+    @DeleteMapping("/albums/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteAlbum(@PathVariable String id) {
         Album album = albumRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Album doesn't exist with ID: " + id));

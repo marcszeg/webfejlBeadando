@@ -8,13 +8,13 @@ class CreateSongComponent extends Component {
         super(props)
 
         this.state = {
-            id: this.props.album.params.id,
+            id: this.props.match.params.id,
             redirect: null,
             userReady: false,
             user: undefined,
             title: '',
             trackNum: '',
-            albumId: '',
+            album_id: '',
         }
 
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
@@ -39,7 +39,7 @@ class CreateSongComponent extends Component {
                 let song = res.data;
                 this.setState({title: song.title,
                     trackNum: song.trackNum,
-                    albumId: song.albumId
+                    album_id: song.album_id
                 });
             });
         }
@@ -47,7 +47,7 @@ class CreateSongComponent extends Component {
 
     saveOrUpdateSong = (t) => {
         t.preventDefault();
-        let song = {title: this.state.title, albumId: this.state.albumId, trackNum: this.state.trackNum};
+        let song = {title: this.state.title, trackNum: this.state.trackNum, album_id: this.state.album_id};
         console.log('song => ' + JSON.stringify(song));
 
         if(this.state.id === '_add') {
@@ -70,7 +70,7 @@ class CreateSongComponent extends Component {
     }
 
     changeAlbumIdHandler = (event) => {
-        this.setState({albumId: event.target.value});
+        this.setState({album_id: event.target.value});
     }
 
     cancel() {
@@ -102,19 +102,19 @@ class CreateSongComponent extends Component {
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
-                                        <label>track number:</label>
-                                        <input placeholder="title" name="title" className="form-control"
-                                               value={this.state.title} onChange={this.changeTrackNumHandler}/>
+                                        <label>title:</label>
+                                        <input name="title" className="form-control"
+                                               value={this.state.title} onChange={this.changeTitleHandler}/>
                                     </div>
                                     <div className="form-group">
-                                        <label>title:</label>
-                                        <input placeholder="artist" name="artist" className="form-control"
-                                               value={this.state.artist} onChange={this.changeTitleHandler}/>
+                                        <label>track number:</label>
+                                        <input name="trackNum" className="form-control"
+                                               value={this.state.trackNum} onChange={this.changeTrackNumHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label>album ID:</label>
-                                        <input placeholder="release" name="release" className="form-control"
-                                               value={this.state.release} onChange={this.changeAlbumIdHandler}/>
+                                        <input name="album_id" className="form-control"
+                                               value={this.state.album_id} onChange={this.changeAlbumIdHandler}/>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.saveOrUpdateSong}>Save</button>

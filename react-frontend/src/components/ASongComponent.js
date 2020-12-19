@@ -63,7 +63,7 @@ class ASongComponent extends Component {
             return <Redirect to={this.state.redirect}/>
         }
 
-        const songs = this.state;
+        const {songs} = this.state;
 
         songs.sort((a, b) => {
             const isReversed = (this.state.sortToggle === true) ? 1 : -1;
@@ -72,11 +72,11 @@ class ASongComponent extends Component {
 
         return (
             <div>
-                <h2 className="text-center">Albums</h2>
+                <h2 className="text-center">Songs</h2>
                 <div style={{"float": "left"}} className="row">
-                    <button className="btn btn-primary" onClick={this.addSong}>Add song</button>
+                    <button className="btn btn-info" onClick={this.addSong}>Add song</button>
                 </div>
-
+                <br></br>
                 <br></br>
                 <div className="row">
                     <table className="table table-striped table-bordered">
@@ -97,14 +97,14 @@ class ASongComponent extends Component {
                                 songs.map(
                                     song =>
                                         <tr key = {song.id}>
-                                            <td className="align-middle" width="10%">{song.id}</td>
-                                            <td className="align-middle" width="9%">{song.album_id}</td>
-                                            <td className="align-middle" width="12%">{song.trackNum}</td>
-                                            <td className="align-middle" width="13%">{song.title}</td>
+                                            <td className="align-middle" width="5%">{song.id}</td>
+                                            <td className="align-middle" width="10%">{song.album_id}</td>
+                                            <td className="align-middle" width="15%">{song.trackNum}</td>
+                                            <td className="align-middle" width="30%">{song.title}</td>
                                             <td className="align-middle">
-                                                <button onClick={ () => this.editSong(song.id)} className="btn btn-info">Update</button>
-                                                <button style={{marginTop: "10px"}} onClick={ () => this.deleteSong(song.id)} className="btn btn-danger">Delete</button>
-                                                <button style={{marginTop: "10px"}} onClick={ () => this.viewSong(song.id)} className="btn btn-info">View</button>
+                                                <button onClick={ () => this.editSong(song.id)} className="btn btn-info">update</button>
+                                                <button style={{marginLeft: "10px"}} onClick={ () => this.deleteSong(song.id)} className="btn btn-info">Delete</button>
+
                                             </td>
                                         </tr>
                                 )

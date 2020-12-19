@@ -3,7 +3,6 @@ package com.deik.webfejlBeadando.album;
 import com.deik.webfejlBeadando.song.Song;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -21,14 +20,14 @@ public class Album {
     private String artist;
 
     @Column(name = "release")
-    private Date release;
+    private int release;
 
-    @OneToMany(mappedBy = "artist_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "album_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Song> album;
 
     public Album() {}
 
-    public Album(String id, String title, String artist, Date release) {
+    public Album(String id, String title, String artist, int release) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -59,11 +58,11 @@ public class Album {
         this.artist = artist;
     }
 
-    public Date getRelease() {
+    public int getRelease() {
         return release;
     }
 
-    void setRelease(Date release) {
+    void setRelease(int release) {
         this.release = release;
     }
 

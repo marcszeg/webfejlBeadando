@@ -6,10 +6,10 @@ import './Style.css';
 
 class AlbumDetailComponent extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
-            id: this.props.albums.params.id,
+            id: this.props.match.params.id,
             redirect: null,
             userReady: false,
             currentUser: {username: ""},
@@ -26,10 +26,10 @@ class AlbumDetailComponent extends Component {
 
         MusicService.getAlbumById(this.state.id).then(res => {
             this.setState({album: res.data});
-            MusicService.getSongs().then((res) => {
-                this.setState({songs: res.data});
-            })
         })
+        /*MusicService.getSongsByAlbumId(this.state.id).then((res) => {
+            this.setState({songs: res.data});
+        })*/
     }
 
     return() {
@@ -47,12 +47,13 @@ class AlbumDetailComponent extends Component {
             return <Redirect to={this.state.redirect}/>
         }
 
-        const songs = this.state;
+        const {songs} = this.state;
 
-        songs.sort((a, b) => {
+        /*songs.sort((a, b) => {
             const isReversed = (this.state.sortToggle === true) ? 1 : -1;
-            return (isReversed * a.trackNum.localeCompare(b.trackNum));
-        });
+            //return (isReversed * a.trackNum.localeCompare(b.trackNum));
+            return (isReversed * a.title.localeCompare(b.title));
+        });*/
 
         return (
             <div>
@@ -61,11 +62,11 @@ class AlbumDetailComponent extends Component {
                         <div> {this.state.album.title} </div>
                     </div>
                     <div className="row">
-                        <table className="table table-striped">
+                        <table className="table">
                             <thead>
                                 <tr>
-                                    <th className="text-center align-middle" style={{width:"20%"}} onClick={this.sortData}>track number<div className={this.state.sortToggle ? "arrow arrow-up" : "arrow arrow-down"}></div></th>
-                                    <th className="text-right align-middle">title</th>
+                                    <th style={{width:"20%"}}>track number</th>
+                                    <th>title</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,8 +77,8 @@ class AlbumDetailComponent extends Component {
                                     songs.map(
                                         song =>
                                             <tr key = {songs.id}>
-                                                <td className="text-center align-middle">{song.trackNum}</td>
-                                                <td className="text-right align-middle" style={{fontWeight:"bold"}}>{song.title}</td>
+                                                <td>{song.trackNum}</td>
+                                                <td>{song.title}</td>
                                             </tr>
                                     )
                                 }

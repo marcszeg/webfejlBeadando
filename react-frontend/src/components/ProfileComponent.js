@@ -31,36 +31,34 @@ export default class Profile extends Component {
             <div className="container">
                 {(this.state.userReady) ?
                 <div>
-                    <header className="jumbotron">
+                    <header>
                         <h3>
-                            <strong>{currentUser.username}</strong> Profile
+                            {currentUser.username}
                         </h3>
                     </header>
-                    <p style={{marginLeft:"40px"}}>
-                        <strong>Token:</strong>{" "}
-                        {currentUser.accessToken.substring(0, 20)} ...{" "}
-                        {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-                    </p>
-                    <p style={{marginLeft:"40px"}}>
-                        <strong>ID:</strong>{" "}
-                        {currentUser.id}
-                    </p>
-                    <p style={{marginLeft:"40px"}}>
-                        <strong>First Name:</strong>{" "}
+
+                    <p>
+                        First Name:{" "}
                         {currentUser.firstName}
                     </p>
-                    <p style={{marginLeft:"40px"}}>
-                        <strong>Last Name:</strong>{" "}
+                    <p>
+                        Last Name:{" "}
                         {currentUser.lastName}
                     </p>
-                    <p style={{marginLeft:"40px"}}>
-                        <strong>E-Mail:</strong>{" "}
+                    <p>
+                        E-Mail:{" "}
                         {currentUser.email}
                     </p>
-                    <strong style={{marginLeft:"40px"}}>Authorities:</strong>
-                    <ul style={{marginLeft:"40px"}}>
-                        {currentUser.roles && currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-                    </ul>
+                    <p>
+                        Role:
+                        <ul>
+                            {currentUser.roles && currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+                        </ul>
+                    </p>
+                    <p>
+                        ID:{" "}
+                        {currentUser.id}
+                    </p>
                 </div>: null}
                 </div>
             );

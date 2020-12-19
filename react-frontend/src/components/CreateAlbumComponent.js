@@ -8,13 +8,14 @@ class CreateAlbumComponent extends Component {
         super(props)
 
         this.state = {
-            id: this.props.album.params.id,
+            id: this.props.match.params.id,
             redirect: null,
             userReady: false,
             user: undefined,
             title: '',
             artist: '',
             release: '',
+            album_id: '',
         }
 
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
@@ -39,7 +40,8 @@ class CreateAlbumComponent extends Component {
                 let album = res.data;
                 this.setState({title: album.title,
                     artist: album.artist,
-                    release: album.release
+                    release: album.release,
+                    album_id: album.album_id
                 });
             });
         }
@@ -103,17 +105,17 @@ class CreateAlbumComponent extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>title:</label>
-                                        <input placeholder="title" name="title" className="form-control"
+                                        <input name="title" className="form-control"
                                                value={this.state.title} onChange={this.changeTitleHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label>artist:</label>
-                                        <input placeholder="artist" name="artist" className="form-control"
+                                        <input name="artist" className="form-control"
                                                value={this.state.artist} onChange={this.changeArtistHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label>release:</label>
-                                        <input placeholder="release" name="release" className="form-control"
+                                        <input name="release" className="form-control"
                                                value={this.state.release} onChange={this.changeReleaseHandler}/>
                                     </div>
 

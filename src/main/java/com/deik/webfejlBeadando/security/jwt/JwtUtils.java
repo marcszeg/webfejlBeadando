@@ -15,10 +15,10 @@ public class JwtUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("${deik.sportapp.jwtSecret}")
+    @Value("${deik.webfejlBeadando.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${deik.sportapp.jwtExpirationMs}")
+    @Value("${deik.webfejlBeadando.jwtExpirationMs}")
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {

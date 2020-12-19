@@ -57,14 +57,6 @@ class App extends Component {
                 Home
               </Link>
             </li>
-            
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/albums-admin"} className="nav-link">
-                  Albums (Admin)
-                </Link>
-              </li>
-            )}
 
             {currentUser && (
               <li className="nav-item">
@@ -72,6 +64,14 @@ class App extends Component {
                   Albums
                 </Link>
               </li>
+            )}
+
+            {showAdminBoard && (
+                <li className="nav-item">
+                  <Link to={"/albums-admin"} className="nav-link">
+                    Albums (Admin)
+                  </Link>
+                </li>
             )}
 
             {showAdminBoard && (
