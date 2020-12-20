@@ -72,14 +72,14 @@ class AAlbumComponent extends Component {
 
         return (
             <div>
-                <h2 className="text-center">Albums</h2>
+                <h2 className="text-center">Albums (admin page)</h2>
                 <div style={{"float": "left"}} className="row">
                     <button className="btn btn-info" onClick={this.addAlbum}>Add album</button>
                 </div>
                 <br></br>
                 <br></br>
                 <div className="row">
-                    <table className="table table-striped table-bordered">
+                    <table className="table table-bordered">
                         <thead>
                             <tr>
                                 <th onClick={this.sortData}>ID<div className={this.state.sortToggle ? "arrow arrow-up" : "arrow arrow-down"}></div></th>

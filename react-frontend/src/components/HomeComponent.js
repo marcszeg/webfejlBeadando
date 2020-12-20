@@ -39,9 +39,9 @@ export default class Home extends Component {
 
     getUserLoginInfo() {
         if (!this.state.userReady) {
-           return <h3><a href="http://localhost:8081/register">Sign up</a> or <a href="http://localhost:8081/login">log in</a> to access data</h3>
+           return <h3 className="text-center"><a href="http://localhost:8081/register">Sign up</a> or <a href="http://localhost:8081/login">log in</a> to access data</h3>
         } else {
-           return <h3>Welcome {this.state.currentUser.username}!</h3>
+           return <h3 className="text-center">Logged in as {this.state.currentUser.username}</h3>
         }
     }
 
@@ -49,7 +49,6 @@ export default class Home extends Component {
         return (
             <div className="container">
                 <header className="jumbotron">
-                    <h3>Webapp</h3>
                     <br></br>
                     {this.getUserLoginInfo()}
                 </header>

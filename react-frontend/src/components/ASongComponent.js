@@ -15,27 +15,6 @@ class ASongComponent extends Component {
             songs: [],
             sortToggle: true
         }
-        this.addSong = this.addSong.bind(this);
-        this.editSong = this.editSong.bind(this);
-        this.deleteSong = this.deleteSong.bind(this);
-    }
-
-    addSong() {
-        this.props.history.push(`/add-song/_add`);
-    }
-
-    editSong(id) {
-        this.props.history.push(`/add-song/${id}`);
-    }
-
-    deleteSong(id) {
-        MusicService.deleteSong(id).then(res => {
-            this.setState({songs: this.state.songs.filter(song => song.id !== id)});
-        });
-    }
-
-    viewSong(id) {
-        this.props.history.push(`/view-song/${id}`);
     }
 
     componentDidMount() {
@@ -72,21 +51,16 @@ class ASongComponent extends Component {
 
         return (
             <div>
-                <h2 className="text-center">Songs</h2>
-                <div style={{"float": "left"}} className="row">
-                    <button className="btn btn-info" onClick={this.addSong}>Add song</button>
-                </div>
-                <br></br>
+                <h2 className="text-center">Songs (admin page)</h2>
                 <br></br>
                 <div className="row">
-                    <table className="table table-striped table-bordered">
+                    <table className="table table-bordered">
                         <thead>
                             <tr>
                                 <th onClick={this.sortData}>ID<div className={this.state.sortToggle ? "arrow arrow-up" : "arrow arrow-down"}></div></th>
                                 <th>album ID</th>
                                 <th>track number</th>
                                 <th>title</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,11 +75,6 @@ class ASongComponent extends Component {
                                             <td className="align-middle" width="10%">{song.album_id}</td>
                                             <td className="align-middle" width="15%">{song.trackNum}</td>
                                             <td className="align-middle" width="30%">{song.title}</td>
-                                            <td className="align-middle">
-                                                <button onClick={ () => this.editSong(song.id)} className="btn btn-info">update</button>
-                                                <button style={{marginLeft: "10px"}} onClick={ () => this.deleteSong(song.id)} className="btn btn-info">Delete</button>
-
-                                            </td>
                                         </tr>
                                 )
                             }

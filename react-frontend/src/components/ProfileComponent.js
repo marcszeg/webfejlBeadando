@@ -30,12 +30,11 @@ export default class Profile extends Component {
         return (
             <div className="container">
                 {(this.state.userReady) ?
-                <div>
-                    <header>
-                        <h3>
+                <div style={{marginLeft:"auto", marginRight:"auto" , width:"75%", padding:"20, 20 20 ,20"}}>
+                    <p>
+                            Username:{" "}
                             {currentUser.username}
-                        </h3>
-                    </header>
+                    </p>
 
                     <p>
                         First Name:{" "}
