@@ -14,7 +14,8 @@ class AlbumDetailComponent extends Component {
             userReady: false,
             currentUser: {username: ""},
             album: {},
-            songs: []
+            songs: [],
+            filter: ''
         }
     }
 
@@ -26,10 +27,14 @@ class AlbumDetailComponent extends Component {
 
         MusicService.getAlbumById(this.state.id).then(res => {
             this.setState({album: res.data});
+            this.setState({filter: this.state.id});
         })
         /*MusicService.getSongsByAlbumId(this.state.id).then((res) => {
             this.setState({songs: res.data});
         })*/
+        MusicService.getSongs().then((res) => {
+            this.setState({songs: res.data});
+        })
     }
 
     return() {
@@ -47,13 +52,17 @@ class AlbumDetailComponent extends Component {
             return <Redirect to={this.state.redirect}/>
         }
 
-        const {songs} = this.state;
+        const {songs, filter} = this.state;
 
         /*songs.sort((a, b) => {
             const isReversed = (this.state.sortToggle === true) ? 1 : -1;
             //return (isReversed * a.trackNum.localeCompare(b.trackNum));
             return (isReversed * a.title.localeCompare(b.title));
         });*/
+
+        const filteredsongs = songs.filter(song => {
+            return (song.album_id.indexOf(filter) !== -1);
+        })
 
         return (
             <div>
@@ -74,7 +83,7 @@ class AlbumDetailComponent extends Component {
                                     <tr align="center">
                                         <td colSpan="9">No songs</td>
                                     </tr>:
-                                    songs.map(
+                                    filteredsongs.map(
                                         song =>
                                             <tr key = {songs.id}>
                                                 <td>{song.trackNum}</td>

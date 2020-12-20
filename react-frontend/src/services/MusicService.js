@@ -29,10 +29,6 @@ class MusicService {
         return axios.get(SONG_API_BASE_URL)
     }
 
-    /*getSongsByAlbumId(albumId) {
-        return axios.get(SONG_API_BASE_URL + '/' + albumId);
-    }
-*/
     createSong(song) {
         return axios.post(SONG_API_BASE_URL, song)
     }

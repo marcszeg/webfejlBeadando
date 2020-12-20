@@ -77,14 +77,6 @@ class CreateSongComponent extends Component {
         this.props.history.push('/songs-admin');
     }
 
-    getSiteTitle() {
-        if(this.state.id === '_add') {
-            return <h3 className="text-center">Add song</h3>
-        } else {
-            return <h3 className="text-center">Update song</h3>
-        }
-    }
-
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect}/>
@@ -96,9 +88,7 @@ class CreateSongComponent extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getSiteTitle()
-                            }
+                            Add/update song
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">

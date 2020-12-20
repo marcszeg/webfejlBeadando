@@ -2,8 +2,8 @@ import axios from 'axios'
 import authHeader from './AuthHeader';
 
 const TEST_REST_API_URL = 'http://localhost:8080/api/test/';
-const USER_REST_API_URL = 'http://localhost:8080/api/auth/comp/matches';
-const ADMIN_REST_API_URL = 'http://localhost:8080/api/auth/comp/matches';
+const USER_REST_API_URL = 'http://localhost:8080/api/auth/music/abums';
+const ADMIN_REST_API_URL = 'http://localhost:8080/api/auth/music/abums';
 
 class UserService {
 

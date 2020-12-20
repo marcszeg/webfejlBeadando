@@ -1,6 +1,5 @@
 package com.deik.webfejlBeadando.song;
 
-import com.deik.webfejlBeadando.album.Album;
 import com.deik.webfejlBeadando.album.AlbumRepository;
 import com.deik.webfejlBeadando.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -50,9 +48,9 @@ public class SongController {
         Song song = songRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Song doesn't exist with ID: " + id));
 
-        song.setAlbum_id(songDetails.getAlbum_id());
         song.setTitle(songDetails.getTitle());
         song.setTrackNum(songDetails.getTrackNum());
+        song.setAlbum_id(songDetails.getAlbum_id());
 
         Song updatedSong = songRepository.save(song);
         return ResponseEntity.ok(updatedSong);

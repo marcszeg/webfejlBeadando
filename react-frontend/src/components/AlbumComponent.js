@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from "react-router-dom";
-import {Card, InputGroup, FormControl, Button} from 'react-bootstrap';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faStepBackward, faFastBackward, faStepForward, faFastForward, faTimes} from '@fortawesome/free-solid-svg-icons';
 import AuthService from "../services/AuthService";
 import './Style.css';
 import MusicService from "../services/MusicService";

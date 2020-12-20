@@ -14,8 +14,8 @@ class CreateAlbumComponent extends Component {
             user: undefined,
             title: '',
             artist: '',
-            release: '',
-            album_id: '',
+            release: ''
+            //album_id: '',
         }
 
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
@@ -40,8 +40,8 @@ class CreateAlbumComponent extends Component {
                 let album = res.data;
                 this.setState({title: album.title,
                     artist: album.artist,
-                    release: album.release,
-                    album_id: album.album_id
+                    release: album.release/*,
+                    album_id: album.album_id*/
                 });
             });
         }
@@ -79,14 +79,6 @@ class CreateAlbumComponent extends Component {
         this.props.history.push('/albums-admin');
     }
 
-    getSiteTitle() {
-        if(this.state.id === '_add') {
-            return <h3 className="text-center">Add album</h3>
-        } else {
-            return <h3 className="text-center">Update album</h3>
-        }
-    }
-
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect}/>
@@ -98,9 +90,7 @@ class CreateAlbumComponent extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getSiteTitle()
-                            }
+                            Add/update album
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
